@@ -1233,10 +1233,13 @@ center {
   nav ul{
     height: 50px;
     font-size: 14px;
+    width: 50px;
   }
-  .Profile , .other , .the-rest{
+  .Profile , .other , .the-rest , .nav-btn, .sign{
     display: none;
   }
+ 
+
   
   body {
     padding-top: 50px;
