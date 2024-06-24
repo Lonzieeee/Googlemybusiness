@@ -8,6 +8,8 @@ body {
   height: 100vh;
   overflow-x: hidden;
   overflow-y: scroll;
+  font-family: "Roboto" sans-serif;
+  padding-top: 60px;
 }
 img {
   width: 50px;
@@ -78,6 +80,8 @@ button {
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
+  position: relative;
+  z-index: 0;
 }
 .sub-container-1 {
   flex: 1;
@@ -97,7 +101,7 @@ button {
 .sub-container-1 p {
   width: 60%;
   text-align: left;
-  /* margin: 0; */
+
   margin-bottom: 20px;
 }
 .card {
@@ -108,7 +112,8 @@ button {
   margin: 20px;
   width: 310px;
   height: 600px;
-  z-index: 1;
+  z-index: 2;
+  position: relative;
 
   border: 1px solid #dfe1e2;
 }
@@ -223,72 +228,60 @@ button {
 .last-card-part p {
   margin: 0;
 }
-/* ANIMATING TH CARD VWITH THE ORBIT BALLS */
+/* ANIMATING THE CARD VWITH THE ORBIT BALLS */
 .orbit-card-wrapper {
   position: relative;
-  width: fit-content;
+  width: 310px;
+  height: 600px;
 }
 .orbit-card-container {
   position: absolute;
-  width: 400px;
-  height: 400px;
-  top: -200px;
-  left: -55px;
+
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
   pointer-events: none;
-  z-index: -1;
-  margin: auto;
 }
 .orbit-card {
-  position: relative;
-  width: 450px;
-  height: 450px;
-  border: 3px dotted #dfe1e2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  height: 500px;
+  margin-top: -250px;
+  margin-left: -240px;
+  border: 2px dotted #dfe1e2;
   border-radius: 50%;
 }
-
+.orbit-ball-card {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform-origin: 250px center;
+}
 
 .orbit-ball-card-1 {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: green;
-  border-radius: 50%;
-  top: 40%;
-  left: 50%;
-  transform: translatex(220px);
-animation: orbit-card-1 20s linear infinite;
-transform-origin: center;
+  background-color: yellow;
+  animation: orbit-card 20s linear infinite;
 }
 .orbit-ball-card-2 {
-  
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color:yellow;
-  border-radius: 50%;
-  top: 40%;
-  left: 50%;
-  transform: translatex(220px);
-  animation: orbit-card-2 20s linear infinite;
-  transform-origin: center ;
+  background-color: green;
+  animation: orbit-card 20s linear infinite;
+  animation-delay: 12s;
 }
-@keyframes orbit-card-1 {
+@keyframes orbit-card {
   0% {
-    transform:  rotate(0deg) translateX(220px) rotate(0deg);
+    transform: rotate(0deg) translateX(250px) rotate(0deg);
   }
   100% {
-    transform:  rotate(360deg) translateX(220px) rotate(-360deg);
+    transform: rotate(360deg) translateX(250px) rotate(-360deg);
   }
 }
-@keyframes orbit-card-2 {
-  0% {
-    transform: rotate(180deg) translateX(200px) rotate(180deg);
-  }
-  100% {
-    transform: rotate(540deg) translateX(200px) rotate(-540deg);
-  }
-}
-
 /* SECTION 2 */
 .container-3 {
   display: flex;
@@ -377,18 +370,7 @@ center {
   padding: 5% 20% 20% 20%;
   gap: 20%;
 }
-/* .one{
-  display: flex;
-  position: relative;
-}
-.border{
- 
-  top:0;
-  bottom: 0;
-  width: 4px;
-  background-color: #1a73e8;
-  position: absolute;
-} */
+
 /* ANIMATING THE <P> AND THE IMAGES TO BE IN SYNC */
 .ads img {
   position: absolute;
@@ -433,7 +415,6 @@ center {
     visibility: 0; */
     opacity: 0;
     z-index: 0;
-    
   }
 }
 
@@ -928,14 +909,27 @@ center {
   align-items: flex-start;
   text-align: left;
   margin-top: -1px;
+  display: none;
 }
 .drop-down a {
   color: #1967d2;
   margin-top: 10px;
+  display: none;
 }
-.drop-down a :hover {
+.drop-down:hover a , .drop-down:hover p {
+  display: block;
+}
+.drop-down a:hover{
   text-decoration: none;
   color: #174ea6;
+  
+  
+}
+/* .btn-5{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 .btn-5 button {
   color: #174ea6;
@@ -943,11 +937,11 @@ center {
   font-size: 16px;
   line-height: 24px;
   border: 2px solid #246ede;
-  margin-left: 45%;
-  margin-top: 20px;
+  justify-content: center;
+  
   width: 150px;
   height: 40px;
-}
+} */
 
 /* FOOTER */
 .footer {
@@ -1018,4 +1012,444 @@ center {
 .last-footer {
   margin-right: 10%;
   margin-left: 10%;
+}
+/* MEDIA QUERIES */
+@media (max-width: 768px) {
+  body {
+    padding-top: 60px;
+  }
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+  }
+  .Profile , .other , .the-rest{
+    display: none;
+  }
+  
+
+  .container-1 {
+    margin: 10% 5% 15%;
+    flex-direction: column;
+   
+    align-items: center;
+  }
+  .sub-container-1 {
+    margin-right: 0;
+    width: 100%;
+    text-align: center;
+  }
+  .sub-container-1 h1 {
+    width: 100%;
+    font-size: 36px;
+    line-height: 44px;
+    text-align: center;
+  }
+  .sub-container-1 p {
+    width: 100%;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+  }
+
+  .card {
+    width: 90%;
+    margin: 10px 0;
+    /* height: auto; */
+  }
+  
+  
+  .orbit-ball-card{
+    transform-origin: 150px center;
+    
+  }
+  
+  .container-3 {
+  /* flex-direction: column;
+  margin: 10px; */
+  /* flex-direction: row;
+  gap: 10%; */
+  margin: 5% 10%;
+  
+  
+ }
+ h2 , p{
+  text-align: left;
+
+ }
+ .free , .personalised , .easy{
+  margin-left: 0;
+  
+
+ }
+ .big-container , .big-container-2{
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+ }
+ .first-impression p , .second-impression p , .desc-1 p , .desc-2 p , .desc-3 p , .definition-1 p , .definition-2 p , .definition-3 p , .definition-4 p {
+  text-align: left;
+ }
+ 
+
+.container-27{
+  flex-direction: row;
+  gap: 17%;
+  padding: 10px;
+}
+.Static-text{
+  width: 50%;
+}
+.Static-text p {
+  width: 65%;
+}
+.container-29{
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+.first-image-container p , .second-image-container p  , .third-image-container p {
+  width: 55%;
+}
+
+.ads , .ads-2{
+  display: none;
+}
+.container-33{
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 5%;
+}
+.container-34{
+  margin: 5% 0;
+}
+.container-34 img{
+  width: 80%;
+}
+.container-35{
+  margin-top: 10%;
+  align-items: center;
+  text-align: center;
+}
+.container-35 p {
+  width: 80%;
+  text-align: center;
+}
+.mechanic{
+  margin-top: 40px;
+}
+.watermarks{
+  margin: 10% auto;
+}
+.watermark{
+  font-size: 100px;
+  line-height: 100px;
+}
+.watermark-container{
+  margin-top: -80px;
+}
+.watermark-text h2{
+  font-size: 20px;
+  line-height: 28px;
+}
+.watermark-text p {
+  font-size: 14px;
+  line-height: 20px;
+}
+.container-38 h2 {
+  font-size: 28px;
+  line-height: 36px;
+  letter-spacing: -0.2px;
+  color: #202124;
+  text-align: center;
+  margin-left: 5%;
+  margin-right: 5%
+}
+.content-hr{
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.drop-down{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.drop-down h3{
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.drop-down p {
+  font-size: 14px;
+  line-height: 20px;
+  width: 100%;
+  margin-top: 0;
+  display: none;
+}
+.drop-down a{
+  display: none;
+}
+.drop-down:hover a , .drop-down:hover p{
+  display: block;
+}
+/* .btn-5 button{
+  margin-left: 35%;
+  width: 120px;
+  height: 36px;
+} */
+ .footer{
+  margin-top: 5%;
+ }
+ .icons{
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+ }
+ .footer-container{
+  flex-direction: column;
+  align-items: center;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-top: 20px;
+  padding-bottom: 40px;
+ }
+ .last-footer{
+  display: none;
+ }
+ .first-links, .second-links{
+  flex-direction: column;
+  gap: 20px;
+ }
+}
+
+@media (max-width: 480px) {
+  nav ul{
+    height: 50px;
+    font-size: 14px;
+  }
+  .Profile , .other , .the-rest{
+    display: none;
+  }
+  
+  body {
+    padding-top: 50px;
+  }
+  .container-1 {
+    margin: 10% 2% 15%;
+    flex-direction: column;
+    align-items: flex-start;
+    /* align-items: center; */
+  }
+  .sub-container-1{
+    margin-right: 0;
+    width: 100%;
+    text-align: center;
+  }
+  .sub-container-1 h1 {
+    width: 100%;
+    font-size: 28px;
+    line-height: 36px;
+    text-align: center;
+  }
+  .sub-container-1 p {
+    width: 100%;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: left;
+  }
+  .card {
+    width: 100%;
+    margin: 10px 0;
+    /* margin-left: 20%; */
+    height: auto;
+    align-items: center;
+    justify-content: center;
+  }
+  /* .orbit-card-wrapper{
+    width: 100%;
+    height: auto;
+    
+  } */
+  .orbit-ball-card{
+    /* transform-origin: 100px center; */
+    display: none;
+  }
+  .orbit-card{
+    display: none;
+  }
+  .card-title{
+    font-size: 14px;
+    margin-left: 2%;
+  }
+  .card-description{
+    font-size: 12px;
+    margin-left: 2%;
+  }
+  .list p{
+    font-size: 9px;
+  }
+  .other-icons p{
+    font-size: 8px;
+
+  }
+  .location p , .time p , .time .coloured, .last-card-part p {
+    font-size: 12px;
+  }
+  .location img{
+    height: 50px;
+    width: 50px;
+  }
+  .container-3{
+    margin:  5% 10%;
+  }
+  h2 , p{
+    text-align: left;
+  }
+  .big-container , .big-container-2{
+    padding: 5% 5%;
+  }
+  .ads , .ads-2{
+    display: none;
+  }
+  .container-27{
+    /* flex-direction: row; */
+    gap: 10%;
+    padding: 5%;
+  }
+    .container-35 h2{
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .Static-text{
+    display: none;
+  }
+  
+  .btn-3{
+  margin: 5% 0;
+  text-align: center;
+  }
+  
+  .first-image-container p , .second-image-container p   , .third-image-container p {
+    width: 100%;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  
+  .first-image-container h2 , .second-image-container h2  , .third-image-container h2 {
+   margin-top: -20px;
+   margin-bottom: -10px;
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .container-33{
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 5%;
+  }
+  .container-34{
+    margin: 5% 0;
+  }
+  .container-34 img{
+    width: 100%;
+  }
+  .container-35{
+    margin-top: 10%;
+    align-items: center;
+    text-align: center;
+  }
+  .container-35 p {
+    width: 100%;
+    text-align: center;
+  }
+  .orbit-container{
+    width: 100%;
+    height: auto;
+  }
+  .mechanic{
+    margin-top: 10%;
+  }
+  .watermarks{
+    margin: 5% auto;
+    padding: 10px;
+  }
+  .watermark{
+    font-size: 80px;
+    line-height: 80px;
+  }
+  .watermark-container{
+    margin-top: -40px;
+  }
+  .watermark-text h2{
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .watermark-text p {
+    font-size: 10px;
+    line-height: 16px;
+  }
+  .container-38 h2 {
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.1px;
+    color: #202124;
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%
+  }
+  .content-hr{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  .drop-down{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  .drop-down h3{
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  .drop-down p {
+    font-size: 14px;
+    line-height: 20px;
+    
+  }
+  
+  /* .btn-5 button{
+    margin-left: 30%;
+    width: 110px;
+    height: 32px;
+  } */
+  .footer{
+    margin-top: 3%;
+   }
+   .icons{
+    margin-left: 3%;
+    margin-right: 3%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+   }
+   .footer-container{
+    
+    margin-left: 3%;
+    margin-right: 3%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+   }
+   .last-footer{
+    display: none;
+   }
+   
 }
